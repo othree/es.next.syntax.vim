@@ -1,0 +1,1 @@
+# es.next.syntax.vim
