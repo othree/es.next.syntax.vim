@@ -7,9 +7,9 @@ This syntax file is for ES7 and future syntax. Need to work with [yajs.vim][].
 Supports:
 
 * Decorator <https://github.com/wycats/javascript-decorators>
+* class property initializer  <https://gist.github.com/jeffmo/054df782c05639da2adb>
 
 TODO:
 
-* class property initializer  <https://gist.github.com/jeffmo/054df782c05639da2adb>
 * Async/await <https://github.com/lukehoban/ecmascript-asyncawait>
 * Type <http://www.typescriptlang.org/>
