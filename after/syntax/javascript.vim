@@ -27,7 +27,7 @@ syntax region  javascriptDecoratorFuncCall     contained matchgroup=javascriptDe
 syntax match   javascriptClassProperty         containedin=javascriptClassBlock /[a-zA-Z_$]\k*\s*=/ nextgroup=@javascriptExpression skipwhite skipempty
 
 " async await
-syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword skipwhite
+syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword,javascriptArrowFuncDef skipwhite
 syntax keyword javascriptAsyncFuncKeyword      await nextgroup=@javascriptExpression skipwhite
 
 syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword
