@@ -8,8 +8,8 @@ Supports:
 
 * Decorator <https://github.com/wycats/javascript-decorators>
 * class property initializer  <https://gist.github.com/jeffmo/054df782c05639da2adb>
+* Async/await <https://github.com/lukehoban/ecmascript-asyncawait>
 
 TODO:
 
-* Async/await <https://github.com/lukehoban/ecmascript-asyncawait>
 * Type <http://www.typescriptlang.org/>

@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     JavaScript
 " Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
-" Last Change:  2015-08-03
+" Last Change:  2015-08-05
 " Version:      0.1
 " Changes:      Go to https://github.com/othree/es.next.syntax.vim for recent changes.
 
@@ -26,6 +26,11 @@ syntax region  javascriptDecoratorFuncCall     contained matchgroup=javascriptDe
 " class property initializer
 syntax match   javascriptClassProperty         containedin=javascriptClassBlock /[a-zA-Z_$]\k*\s*=/ nextgroup=@javascriptExpression skipwhite skipempty
 
+" async await
+syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword skipwhite
+syntax keyword javascriptAsyncFuncKeyword      await nextgroup=@javascriptExpression skipwhite
+
+syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword
 
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
@@ -34,6 +39,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptDecoratorParens     Statement
 
   HiLink javascriptClassProperty       Normal
+
+  HiLink javascriptAsyncFuncKeyword    Keyword
 
   delcommand HiLink
   unlet did_javascript_hilink
