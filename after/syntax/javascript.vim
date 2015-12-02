@@ -33,6 +33,8 @@ syntax keyword javascriptAsyncFuncKeyword      await nextgroup=@javascriptExpres
 
 syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword
 
+syntax match   javascriptOpSymbol              contained /\(::\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 1
+
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
   HiLink javascriptDecoratorFuncName   Statement
