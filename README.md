@@ -9,6 +9,7 @@ Supports:
 * Decorator <https://github.com/wycats/javascript-decorators>
 * class property initializer  <https://gist.github.com/jeffmo/054df782c05639da2adb>
 * Async/await <https://github.com/lukehoban/ecmascript-asyncawait>
+* Exponentiation operator <https://github.com/rwaldron/exponentiation-operator>
 
 TODO:
 
