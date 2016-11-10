@@ -33,8 +33,24 @@ syntax keyword javascriptAsyncFuncKeyword      await nextgroup=@javascriptExpres
 
 syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword
 
+" bind operator
 syntax match   javascriptOpSymbol              contained /\(::\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 1
+" exponentiation operator
 syntax match   javascriptOpSymbol              contained /\(**\|**=\)/ " 2: **, **=
+
+" type hint
+syntax cluster javascriptAfterIdentifier       contains=javascriptDotNotation,javascriptFuncCallArg,javascriptComputedProperty,javascriptOpSymbols,@javascriptComments,javascriptTypeComma
+
+syntax match   javascriptTypeComma             contained /:/ nextgroup=@javascriptTypeHints skipwhite
+syntax match   javascriptTypeHint              contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
+syntax match   javascriptTypeHintOr            contained /\s*|/ nextgroup=@javascriptTypeHints skipwhite
+syntax region  javascriptTypeTuple             contained matchgroup=javascriptBrackets start=/\s*\zs\[/ end=/]/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
+syntax region  javascriptTypeGeneric           contained matchgroup=javascriptBrackets start=/\s*\zs</ end=/>/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeArray,@javascriptAfterIdentifier
+
+syntax match   javascriptTypeHintOnly          contained /\s*\zs\<[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOrOnly
+syntax match   javascriptTypeHintOrOnly        contained /\s*\zs|/ nextgroup=javascriptTypeHintOnly skipwhite
+
+syntax cluster javascriptTypeHints             contains=javascriptTypeHint,javascriptTypeTuple,javascriptTypeGeneric
 
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
