@@ -30,7 +30,8 @@ syntax region  javascriptClassBlock            contained matchgroup=javascriptBr
 
 " async await
 syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword,javascriptArrowFuncDef skipwhite
-syntax keyword javascriptAsyncFuncKeyword      await nextgroup=@javascriptExpression skipwhite
+syntax keyword javascriptAwaitFuncKeyword      await nextgroup=@javascriptExpression skipwhite
+syntax match   javascriptArrowFuncDef          /(\_[^)]*)\_s*=>/ contains=javascriptArrowFuncArg,javascriptComma,javascriptArrowFunc nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef,javascriptParenObjectLiteral,javascriptClassSuper,javascriptClassKeyword,javascriptAsyncFuncKeyword skipwhite skipempty
 
 syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword
 
@@ -62,6 +63,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptClassProperty       Normal
 
   HiLink javascriptAsyncFuncKeyword    Keyword
+  HiLink javascriptAwaitFuncKeyword    Keyword
 
   delcommand HiLink
   unlet did_javascript_hilink
