@@ -31,9 +31,9 @@ syntax region  javascriptClassBlock            contained matchgroup=javascriptBr
 " async await
 syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword,javascriptArrowFuncDef skipwhite
 syntax keyword javascriptAwaitFuncKeyword      await nextgroup=@javascriptExpression skipwhite
-syntax match   javascriptArrowFuncDef          /(\_[^)]*)\_s*=>/ contains=javascriptArrowFuncArg,javascriptComma,javascriptArrowFunc nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef,javascriptParenObjectLiteral,javascriptClassSuper,javascriptClassKeyword,javascriptAsyncFuncKeyword skipwhite skipempty
 
-syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword
+syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword,javascriptAwaitFuncKeyword
+syntax cluster afterArrowFunc                  add=javascriptAsyncFuncKeyword
 
 " bind operator
 syntax match   javascriptOpSymbol              contained /\(::\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 1
