@@ -54,6 +54,10 @@ syntax match   javascriptTypeHintOrOnly        contained /\s*\zs|/ nextgroup=jav
 
 syntax cluster javascriptTypeHints             contains=javascriptTypeHint,javascriptTypeTuple,javascriptTypeGeneric
 
+" import()
+syntax keyword javascriptImport                import nextgroup=javascriptImportPattern,javascriptFuncCallArg
+syntax match   javascriptImportPattern         contained /\s\+\zs\*/
+
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
   HiLink javascriptDecoratorFuncName   Statement
