@@ -28,17 +28,8 @@ syntax match   javascriptClassProperty         contained containedin=javascriptC
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptClassProperty,javascriptMethodName,javascriptMethodAccessor skipwhite
 syntax region  javascriptClassBlock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodName,javascriptMethodAccessor,javascriptClassStatic,@javascriptComments,@javascriptValue fold
 
-" async await
-syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword,javascriptArrowFuncDef skipwhite
-syntax keyword javascriptAwaitFuncKeyword      await nextgroup=@javascriptExpression skipwhite
-
-syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword,javascriptAwaitFuncKeyword
-syntax cluster afterArrowFunc                  add=javascriptAsyncFuncKeyword
-
 " bind operator
 syntax match   javascriptOpSymbol              contained /\(::\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 1
-" exponentiation operator
-syntax match   javascriptOpSymbol              contained /\(**\|**=\)/ " 2: **, **=
 
 " type hint
 syntax cluster javascriptAfterIdentifier       contains=javascriptDotNotation,javascriptFuncCallArg,javascriptComputedProperty,javascriptOpSymbols,@javascriptComments,javascriptTypeComma
