@@ -38,12 +38,26 @@ syntax match   javascriptTypeComma             contained /:/ nextgroup=@javascri
 syntax match   javascriptTypeHint              contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
 syntax match   javascriptTypeHintOr            contained /\s*|/ nextgroup=@javascriptTypeHints skipwhite
 syntax region  javascriptTypeTuple             contained matchgroup=javascriptBrackets start=/\s*\zs\[/ end=/]/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
-syntax region  javascriptTypeGeneric           contained matchgroup=javascriptBrackets start=/\s*\zs</ end=/>/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeArray,@javascriptAfterIdentifier
+syntax region  javascriptTypeGeneric           contained matchgroup=javascriptBrackets start=/\s*\zs</ end=/>/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeArray,@javascriptAfterIdentifier skipwhite skipempty
 
 syntax match   javascriptTypeHintOnly          contained /\s*\zs\<[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOrOnly
 syntax match   javascriptTypeHintOrOnly        contained /\s*\zs|/ nextgroup=javascriptTypeHintOnly skipwhite
 
+syntax cluster javascriptFuncArgElements       add=javascriptTypeComma
+
 syntax cluster javascriptTypeHints             contains=javascriptTypeHint,javascriptTypeTuple,javascriptTypeGeneric
+
+" function return type
+syntax match   javascriptFuncTypeComma         contained /:/ nextgroup=@javascriptFuncTypeHints skipwhite
+syntax match   javascriptFuncTypeHint          contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock
+syntax match   javascriptFuncTypeHintOr        contained /\s*|/ nextgroup=@javascriptFuncTypeHints skipwhite
+syntax region  javascriptFuncTypeTuple         contained matchgroup=javascriptBrackets start=/\s*\zs\[/ end=/]/ contains=javascriptTypeHintOnly nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock
+syntax region  javascriptFuncTypeGeneric       contained matchgroup=javascriptBrackets start=/\s*\zs</ end=/>/ contains=javascriptTypeHintOnly nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeArray,javascriptBlock skipwhite skipempty
+
+syntax cluster javascriptFuncTypeHints         contains=javascriptFuncTypeHint,javascriptFuncTypeTuple,javascriptFuncTypeGeneric
+
+syntax clear   javascriptFuncArg
+syntax region  javascriptFuncArg               contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptFuncArgElements nextgroup=javascriptFuncTypeComma,javascriptBlock skipwhite skipempty
 
 " import()
 syntax keyword javascriptImport                import nextgroup=javascriptImportPattern,javascriptFuncCallArg
@@ -59,6 +73,9 @@ if exists("did_javascript_hilink")
 
   HiLink javascriptAsyncFuncKeyword    Keyword
   HiLink javascriptAwaitFuncKeyword    Keyword
+
+  HiLink javascriptTypeHint            Structure
+  HiLink javascriptFuncTypeHint        Structure
 
   delcommand HiLink
   unlet did_javascript_hilink
