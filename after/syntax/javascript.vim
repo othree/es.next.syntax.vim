@@ -56,7 +56,6 @@ syntax region  javascriptFuncTypeGeneric       contained matchgroup=javascriptBr
 
 syntax cluster javascriptFuncTypeHints         contains=javascriptFuncTypeHint,javascriptFuncTypeTuple,javascriptFuncTypeGeneric
 
-syntax clear   javascriptFuncArg
 syntax region  javascriptFuncArg               contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptFuncArgElements nextgroup=javascriptFuncTypeComma,javascriptBlock skipwhite skipempty
 
 " import()
