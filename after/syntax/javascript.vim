@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:     JavaScript
 " Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
-" Last Change:  2015-08-05
-" Version:      0.1
+" Last Change:  2017-03-02
+" Version:      0.3
 " Changes:      Go to https://github.com/othree/es.next.syntax.vim for recent changes.
 
 
