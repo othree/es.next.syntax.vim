@@ -11,4 +11,5 @@ Supports:
 * Bind Operator <https://github.com/tc39/proposal-bind-operator>
 * `import()` <https://github.com/tc39/proposal-dynamic-import>
 * Simple Type Hint
+* Pipeline operator
 

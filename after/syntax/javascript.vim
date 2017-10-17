@@ -62,6 +62,9 @@ syntax region  javascriptFuncArg               contained matchgroup=javascriptPa
 syntax keyword javascriptImport                import nextgroup=javascriptImportPattern,javascriptFuncCallArg
 syntax match   javascriptImportPattern         contained /\s\+\zs\*/
 
+" pipeline operator
+syntax match javascriptOpSymbol contained /\|>/ " 1: |>
+
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
   HiLink javascriptDecoratorFuncName   Statement
