@@ -61,6 +61,8 @@ syntax region  javascriptFuncArg               contained matchgroup=javascriptPa
 " import()
 syntax keyword javascriptImport                import nextgroup=javascriptImportPattern,javascriptFuncCallArg
 syntax match   javascriptImportPattern         contained /\s\+\zs\*/
+syntax cluster javascriptExpression            add=javascriptImport
+syntax cluster afterArrowFunc                  add=javascriptImport
 
 " pipeline operator
 syntax match javascriptOpSymbol contained /\|>/ " 1: |>
