@@ -67,6 +67,12 @@ syntax cluster afterArrowFunc                  add=javascriptImport
 " pipeline operator
 syntax match javascriptOpSymbol contained /\|>/ " 1: |>
 
+" bigint
+syntax match   javascriptNumber                /\<0[bB][01]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /\<0[oO][0-7]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /[+-]\=\d\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
+
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
   HiLink javascriptDecoratorFuncName   Statement
