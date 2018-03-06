@@ -67,6 +67,20 @@ syntax cluster afterArrowFunc                  add=javascriptImport
 " pipeline operator
 syntax match javascriptOpSymbol contained /\|>/ " 1: |>
 
+" numeric separator
+" syntax match   javascriptNumber                /\<0[bB][01][01]\=\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /\<0[bB][01][_01]\+[01]\>/ nextgroup=@javascriptComments skipwhite skipempty
+" syntax match   javascriptNumber                /\<0[oO][0-7][0-7]\=n\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /\<0[oO][0-7][_0-7]\+[0-7]\>/ nextgroup=@javascriptComments skipwhite skipempty
+" syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F][0-9a-fA-F]\=n\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F][_0-9a-fA-F]\+[0-9a-fA-F]\>/ nextgroup=@javascriptComments skipwhite skipempty
+
+" too much case for decimal, use non strict pattern for better performance
+syntax match   javascriptNumber                /[+-]\=\%([_0-9]\+\.[_0-9]\+\|[_0-9]\+\|\.[_0-9]\+\)\%([eE][+-]\=[_0-9]\+\)\=\>/ nextgroup=@javascriptComments skipwhite skipempty
+syntax match   javascriptNumber                /[+-]\=[_0-9]\+\.\%([eE][+-]\=[_0-9]\+\)\=/ nextgroup=@javascriptComments skipwhite skipempty
+" non number pattern
+syntax match   javascriptNonNumber             /\%(\<\|\.\|e\)_[_0-9]\+\|[_0-9]\+_\%(\>\|\.\|e\|n\)/ nextgroup=@javascriptComments skipwhite skipempty
+
 " bigint
 syntax match   javascriptNumber                /\<0[bB][01]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptNumber                /\<0[oO][0-7]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
