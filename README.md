@@ -12,4 +12,5 @@ Supports:
 * `import()` <https://github.com/tc39/proposal-dynamic-import>
 * Simple Type Hint
 * Pipeline operator
+* Numeric separator
 
