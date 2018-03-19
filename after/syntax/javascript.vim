@@ -95,9 +95,6 @@ if exists("did_javascript_hilink")
 
   HiLink javascriptClassProperty       Normal
 
-  HiLink javascriptAsyncFuncKeyword    Keyword
-  HiLink javascriptAwaitFuncKeyword    Keyword
-
   HiLink javascriptTypeHint            Structure
   HiLink javascriptFuncTypeHint        Structure
 
