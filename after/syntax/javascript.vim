@@ -36,6 +36,7 @@ syntax cluster javascriptAfterIdentifier       contains=javascriptDotNotation,ja
 
 syntax match   javascriptTypeComma             contained /:/ nextgroup=@javascriptTypeHints skipwhite
 syntax match   javascriptTypeHint              contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
+syntax keyword javascriptTypeHint              contained null void nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
 syntax match   javascriptTypeHintOr            contained /\s*|/ nextgroup=@javascriptTypeHints skipwhite
 syntax region  javascriptTypeTuple             contained matchgroup=javascriptBrackets start=/\s*\zs\[/ end=/]/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
 syntax region  javascriptTypeGeneric           contained matchgroup=javascriptBrackets start=/\s*\zs</ end=/>/ contains=javascriptTypeHintOnly nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeArray,@javascriptAfterIdentifier skipwhite skipempty
