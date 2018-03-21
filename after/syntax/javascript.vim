@@ -50,9 +50,10 @@ syntax cluster javascriptTypeHints             contains=javascriptTypeHint,javas
 
 " function return type
 syntax match   javascriptFuncTypeComma         contained /:/ nextgroup=@javascriptFuncTypeHints skipwhite
-syntax match   javascriptFuncTypeHint          contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock
+syntax match   javascriptFuncTypeHint          contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock skipwhite skipempty
+syntax keyword javascriptFuncTypeHint          contained null void nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock skipwhite skipempty
 syntax match   javascriptFuncTypeHintOr        contained /\s*|/ nextgroup=@javascriptFuncTypeHints skipwhite
-syntax region  javascriptFuncTypeTuple         contained matchgroup=javascriptBrackets start=/\s*\zs\[/ end=/]/ contains=javascriptTypeHintOnly nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock
+syntax region  javascriptFuncTypeTuple         contained matchgroup=javascriptBrackets start=/\s*\zs\[/ end=/]/ contains=javascriptTypeHintOnly nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeGeneric,javascriptBlock skipwhite skipempty
 syntax region  javascriptFuncTypeGeneric       contained matchgroup=javascriptBrackets start=/\s*\zs</ end=/>/ contains=javascriptTypeHintOnly nextgroup=javascriptFuncTypeHintOr,javascriptFuncTypeTuple,javascriptFuncTypeArray,javascriptBlock skipwhite skipempty
 
 syntax cluster javascriptFuncTypeHints         contains=javascriptFuncTypeHint,javascriptFuncTypeTuple,javascriptFuncTypeGeneric
