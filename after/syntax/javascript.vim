@@ -32,7 +32,7 @@ syntax region  javascriptClassBlock            contained matchgroup=javascriptBr
 syntax match   javascriptOpSymbol              contained /\(::\)/ nextgroup=@javascriptExpression,javascriptInvalidOp skipwhite skipempty " 1
 
 " type hint
-syntax cluster javascriptAfterIdentifier       contains=javascriptDotNotation,javascriptFuncCallArg,javascriptComputedProperty,javascriptOpSymbols,@javascriptComments,javascriptTypeComma
+syntax cluster javascriptAfterIdentifier       contains=javascriptDotNotation,javascriptFuncCallArg,javascriptComputedProperty,javascriptOpSymbols,@javascriptComments,javascriptArrowFunc,javascriptTypeComma
 
 syntax match   javascriptTypeComma             contained /:/ nextgroup=@javascriptTypeHints skipwhite
 syntax match   javascriptTypeHint              contained /[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOr,javascriptTypeTuple,javascriptTypeGeneric,@javascriptAfterIdentifier
@@ -43,6 +43,8 @@ syntax region  javascriptTypeGeneric           contained matchgroup=javascriptBr
 
 syntax match   javascriptTypeHintOnly          contained /\s*\zs\<[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOrOnly
 syntax match   javascriptTypeHintOrOnly        contained /\s*\zs|/ nextgroup=javascriptTypeHintOnly skipwhite
+
+syntax match   javascriptArrowFuncDef          /(\_[^)]*)[^()]*\_s*=>/ contains=javascriptArrowFuncArg,javascriptComma,javascriptArrowFunc,javascriptTypeComma nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef,javascriptParenObjectLiteral,javascriptClassSuper,javascriptClassKeyword,@afterArrowFunc skipwhite skipempty
 
 syntax cluster javascriptFuncArgElements       add=javascriptTypeComma
 
