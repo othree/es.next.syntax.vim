@@ -85,12 +85,6 @@ syntax match   javascriptNumber                /[+-]\=[_0-9]\+\.\%([eE][+-]\=[_0
 " non number pattern
 syntax match   javascriptNonNumber             /\%(\<\|\.\|e\)_[_0-9]\+\|[_0-9]\+_\%(\>\|\.\|e\|n\)/ nextgroup=@javascriptComments skipwhite skipempty
 
-" bigint
-syntax match   javascriptNumber                /\<0[bB][01]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
-syntax match   javascriptNumber                /\<0[oO][0-7]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
-syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
-syntax match   javascriptNumber                /[+-]\=\d\+n\>/ nextgroup=@javascriptComments skipwhite skipempty
-
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
   HiLink javascriptDecoratorFuncName   Statement
