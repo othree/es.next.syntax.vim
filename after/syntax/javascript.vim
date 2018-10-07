@@ -70,6 +70,9 @@ syntax cluster afterArrowFunc                  add=javascriptImport
 
 " pipeline operator
 syntax match javascriptOpSymbol contained /\|>/ " 1: |>
+" nullish coalescing operator
+syntax match javascriptOpSymbol contained /??/ " 1: ??
+
 
 " numeric separator
 " syntax match   javascriptNumber                /\<0[bB][01][01]\=\>/ nextgroup=@javascriptComments skipwhite skipempty
