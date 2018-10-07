@@ -85,6 +85,9 @@ syntax match   javascriptNumber                /[+-]\=[_0-9]\+\.\%([eE][+-]\=[_0
 " non number pattern
 syntax match   javascriptNonNumber             /\%(\<\|\.\|e\)_[_0-9]\+\|[_0-9]\+_\%(\>\|\.\|e\|n\)/ nextgroup=@javascriptComments skipwhite skipempty
 
+" overwrite number inside object/class
+syntax match   javascriptObjectMethodName      contained /[a-zA-Z0-9_$]\+\ze\_s*(/ nextgroup=javascriptFuncArg skipwhite skipempty
+
 if exists("did_javascript_hilink")
   HiLink javascriptDecorator           Statement
   HiLink javascriptDecoratorFuncName   Statement
