@@ -44,7 +44,7 @@ syntax region  javascriptTypeGeneric           contained matchgroup=javascriptBr
 syntax match   javascriptTypeHintOnly          contained /\s*\zs\<[a-zA-Z_$][0-9a-zA-Z_$]*/ nextgroup=javascriptTypeHintOrOnly
 syntax match   javascriptTypeHintOrOnly        contained /\s*\zs|/ nextgroup=javascriptTypeHintOnly skipwhite
 
-syntax match   javascriptArrowFuncDef          /(\_[^)]*)[^()]*\_s*=>/ contains=javascriptArrowFuncArg,javascriptComma,javascriptArrowFunc,javascriptTypeComma nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef,javascriptParenObjectLiteral,javascriptClassSuper,javascriptClassKeyword,@afterArrowFunc skipwhite skipempty
+syntax match   javascriptArrowFuncDef          /(\_[^()]*)[^()]*\_s*=>/ contains=javascriptArrowFuncArg,javascriptComma,javascriptArrowFunc,javascriptTypeComma nextgroup=javascriptOperator,javascriptIdentifierName,javascriptBlock,javascriptArrowFuncDef,javascriptParenObjectLiteral,javascriptClassSuper,javascriptClassKeyword,@afterArrowFunc skipwhite skipempty
 
 syntax cluster javascriptFuncArgElements       add=javascriptTypeComma
 
