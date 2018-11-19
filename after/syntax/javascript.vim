@@ -92,10 +92,10 @@ syntax match   javascriptNonNumber             /\%(\<\|\.\|e\)_[_0-9]\+\|[_0-9]\
 syntax match   javascriptObjectMethodName      contained /[a-zA-Z0-9_$]\+\ze\_s*(/ nextgroup=javascriptFuncArg skipwhite skipempty
 
 if exists("did_javascript_hilink")
-  HiLink javascriptDecorator           Statement
-  HiLink javascriptDecoratorFuncName   Statement
+  HiLink javascriptDecorator           Operator
+  HiLink javascriptDecoratorFuncName   Function
   HiLink javascriptDecoratorFuncCall   Statement
-  HiLink javascriptDecoratorParens     Statement
+  HiLink javascriptDecoratorParens     javascriptParens
 
   HiLink javascriptClassProperty       Normal
 
